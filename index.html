@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TIME
+	</title>
+	<style type="text/css">
+		body{background: url(gold.png);margin: 17px; }
+		#left{width: 5vw; height: 7vh;
+			background: url(pink.png);
+			background-size: 5vw auto;
+			animation: shift 5s infinite linear;}
+		@keyframes shift{
+			from{background-position: 0 0;}
+			to{background-position: -20vw 0;}
+		}
+		
+		body{text-align: center;}
+		.tdate{font-family: 'lato', sans-serif; font-size: 1em; font-weight: 100; -webkit-user-select: color: ghostwhite; align; margin-top:2px}
+		#cl{font-family: 'lato', sans-serif; font-size: 20em; font-weight: 1,300; color: black; margin-top: 150px;}
+	.music{
+		    position: absolute;
+		    width: 50px;
+		    height: 50px;
+		    left: 30px;
+		    top: 25px;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    touch-action: none;
+		}
+	.box{width: 100px; height: 38px; position: absolute; background: yellow;}
+	.
+	
+	</style>
+</head>
+<body>
+
+
+	<div id="container">
+		<div id="left" class="shiftani"></div>
+		<div id="right" class="shiftani"></div>
+	</div>	
+
+
+	<div class="music">
+		<img id="musicBut" src="music.png" alt="music" =>
+		<audio id="musicSnd" src="music.mp3"> </audio>
+	</div>
+
+	<div id="cl" class="clock">24:01:26</div>
+	<div id="td" class="tdate">10.05.Tuesday</div>
+
+
+<script type="text/javascript">
+
+var today = new Date();
+
+console.log(today.getDate());
+
+
+var month = (today.getMonth() + 1);
+var day = today.getDate() < 10 ? ('0' + today.getDate()) : today.getDate();
+var yoil = (today.getDay());
+
+document.getElementById("td").innerHTML = month + '.' + day + '.' + yoiltrans(yoil);
+
+		function yoiltrans(num){
+			var num2;
+			if(num == "1"){ num2 = "MONDAY"}
+			else if(num == "2"){ num2 = "TUESDAY"}
+			else if(num == "3"){ num2 = "WEDNESDAY"}
+			else if(num == "4"){ num2 = "THURSDAY"}
+			else if(num == "5"){ num2 = "FRIDAY"}
+			else if(num == "6"){ num2 = "SATURDAY"}
+			else if(num == "0"){ num2 = "SUNDAY"}
+			return num2;
+		}
+
+
+
+function getTime(){
+var d = new Date();
+
+var h = ('0' + (d.getHours() + 1)).slice(-2);
+var m = ('0' + d.getMinutes()).slice(-2);
+var s = ('0' + d.getSeconds()).slice(-2);
+
+document.getElementById("cl").innerHTML = h + ":" + m + ":" + s;}
+
+function init(){
+	setInterval(getTime, 1000);
+}
+
+init();
+
+
+
+
+var state = "off";
+
+	musicBut.onclick = function(){
+		if(state == "off"){
+				musicBut.src = "music.png"
+				musicSnd.play();
+						state = "on";
+			} else if(state == "on"){
+				musicBut.src = "stop.png"
+					musicSnd.pause();
+				state = "off";
+					}
+				} 
+
+
+makebox();
+	function makebox(){
+		var a = document.createElement("div");
+		a.id = "square";
+		a.className = "box";
+		a.innerHTML = "TIME IS GOLD"
+		var b = Math.random()*window.innerWidth;
+		var c = Math.random()*window.innerHeight;
+		a.style.left = b + "px";
+		a.style.top = c + "px";
+		a.onclick = function (){
+			a.parentNode.removeChild(a);
+			makebox();
+		}
+		document.body.appendChild(a);
+		console.log(window.innerWidth, window.innerHeight);
+
+	}
+
+</script>
+
+
+
+</body>
+</html>
